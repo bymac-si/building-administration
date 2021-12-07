@@ -1,0 +1,22 @@
+<h1>Edificios</h1>
+<table>
+  <thead>
+    <tr>
+      <th style="border:1px solid black" >Name</th>
+      <th style="border:1px solid black">Address</th>
+      <th style="border:1px solid black">City</th>
+      <th colspan="4" style="border:1px solid black">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @buildings.each do |building| %>
+      <tr>
+        <td style="border:1px solid black"><%= building.name %></td>
+        <td style="border:1px solid black"><%= building.address %></td>
+        <td style="border:1px solid black"><%= building.city %></td>
+        <td style="border:1px solid black"><%= link_to "Ver", building %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Agregar Edificio", new_building_path %>
