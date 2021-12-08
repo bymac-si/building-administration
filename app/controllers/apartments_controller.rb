@@ -1,6 +1,6 @@
 class ApartmentsController < ApplicationController
   def index
-    @apartments = Apartment.all
+    @apartments = Apartment.all.order(:building_id, :number)
   end
 
   def new
@@ -14,7 +14,7 @@ class ApartmentsController < ApplicationController
     respond_to do |format|
       if @apartment.save
         format.html {
-          redirect_to @apartment, notice: "Apartment was successfully created."
+          redirect_to @apartment, notice: "El Departamento fue creado correctamente."
         }
       else
         format.html { render :new }

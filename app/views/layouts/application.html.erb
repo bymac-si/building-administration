@@ -16,12 +16,13 @@
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom bg-dark text-white">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4 text-white"><i class="bi bi-building"></i> Sistema de administración de edificios </span>
+        <span class="fs-4 text-white"><i class="bi bi-building"></i> InmoBITS | Sistema de administración de edificios </span>
       </a>
 
       <ul class="nav nav-pills">
+      <li class="nav-item text-white"><a href="/" class="text-white">Inicio</a>&nbsp;&nbsp;|&nbsp;&nbsp;
         <li class="nav-item text-white"><%= link_to "Edificios", buildings_path, class:'text-white' %></li>  &nbsp;&nbsp;|&nbsp;&nbsp;
-        <li class="nav-item text-white"><%= link_to "Apartamentos", apartments_path, class:'text-white' %></li>&nbsp;&nbsp;
+        <li class="nav-item text-white"><%= link_to "Departamentos", apartments_path, class:'text-white' %></li>&nbsp;&nbsp;
       </ul>
     </header>
     <%= yield %>
