@@ -1,4 +1,4 @@
-<%= form_with(model: [@building], local: true) do |form| %>
+<%= form_with(model: [@building], local: true, class:'p-4 p-md-5 border rounded-3 bg-light') do |form| %>
   <% if building.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(building.errors.count, "error") %> prohibited
@@ -10,19 +10,20 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="form-label">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class:'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-label">
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, class:'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-label">
     <%= form.label :city %>
-    <%= form.text_field :city %>
+    <%= form.text_field :city, class:'form-control' %>
   </div>
-  <div class="actions">
-    <%= form.submit %>
+  <br>
+  <div class="w-100 btn btn-lg btn-primary">
+    <%= form.submit class:'w-100 btn btn-lg btn-primary' %>
   </div>
 <% end %>
