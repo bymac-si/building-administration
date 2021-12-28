@@ -1,6 +1,9 @@
 class ApartmentsController < ApplicationController
+
+  before_action :set_apartment, only: [:show, :edit, :update, :destroy]
+
   def index
-    @apartments = Apartment.all.order(:building_id, :number)
+    @apartments = Apartment.all.includes(:building).order(:building_id, :number)   
   end
 
   def new
@@ -21,14 +24,42 @@ class ApartmentsController < ApplicationController
       end
     end
   end
+  
+  def update
+    if @apartment.update(apartment_params)
+      redirect_to apartments_path
+    else
+      render :edit
+    end
+  end
+
+  def edit
+   @buildings = Building.all
+  end
+
+  def destroy
+    if @apartment.destroy
+      flash[:destroy] = "Departamento #{@apartment.number} eliminado"
+    else
+      flash[:destroy] = "No pudo eliminarse"
+    end
+    redirect_to apartments_path
+    
+  end
 
   def show
-    @apartment = Apartment.find(params[:id])
+   
   end
+
+ 
 
   private
 
   def apartment_params
     params.require(:apartment).permit(:number, :building_id)
+  end
+
+  def set_apartment
+    @apartment = Apartment.find(params[:id])
   end
 end

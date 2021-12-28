@@ -1,7 +1,7 @@
 <div class="px-4 py-5 my-5 text-center">
    <h1> <i class="bi bi-building"></i> </h1>
     <h1 class="display-5 fw-bold">Edificios</h1>
-    <div class="col-lg-6 mx-auto">
+    <div class="col-lg-8 mx-auto">
 <table class="table table-striped col-lg-8 mx-auto text-center">
   <thead>
     <tr class="bg-secondary text-white">
@@ -9,7 +9,7 @@
       <th style="border:1px solid black">Dirección</th>
       <th style="border:1px solid black">Ciudad</th>
       <th style="border:1px solid black">Departamentos</th>
-      <th colspan="4" style="border:1px solid black">Acción</th>
+      <th colspan="4" style="border:1px solid black; width: auto;">Acción</th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +19,15 @@
         <td style="border:1px solid black"><%= building.address %></td>
         <td style="border:1px solid black"><%= building.city %></td>
         <td style="border:1px solid black"><%= building.apartments.count %></td>
-        <td style="border:1px solid black"><%= link_to "Ver", building %></td>
+        <td style="border:1px solid black"><%= link_to building, class:'btn btn-outline-primary' do %>
+        <i class="bi bi-eyeglasses"></i> Ver <%end%>
+         <%= link_to edit_building_path(building), class:'btn btn-outline-primary' do%>
+         <i class="bi bi-pencil-square"></i> Editar
+         <%end%>
+          <%= link_to building_path(building), class:'btn btn-outline-primary', method: :delete, data: { confirm: "¿Seguro que quiere eliminar el edificio?" }  do %>
+          <i class="bi bi-x-square"></i> Borrar
+          <%end%>
+          </td>
       </tr>
     <% end %>
   </tbody>

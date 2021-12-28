@@ -15,7 +15,16 @@
       <tr>
         <td style="border:1px solid black" ><i class="bi bi-door-open"></i>&nbsp;<%= apartment.number %></td>
         <td style="border:1px solid black" ><%= apartment.building %></td>
-        <td style="border:1px solid black" ><%= link_to "Ver", apartment %></td>
+        <td style="border:1px solid black" ><%= link_to apartment, class:'btn btn-outline-primary' do %> 
+        <i class="bi bi-eyeglasses"></i> Ver 
+        <%end%>
+        <%= link_to edit_apartment_path(apartment), class:'btn btn-outline-primary' do %>
+        <i class="bi bi-pencil-square"></i> Editar
+        <%end%> 
+        <%= link_to apartment, method: :delete, data: { confirm: "¿Seguro que quiere eliminar el departamento?" }, class:'btn btn-outline-primary' do %>
+        <i class="bi bi-x-square"></i> Borrar
+        <%end%>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,4 +1,6 @@
 class BuildingsController < ApplicationController
+before_action :set_building, only: [:show, :edit, :update, :destroy]
+
   def index
     @buildings = Building.all
   end
@@ -20,23 +22,37 @@ class BuildingsController < ApplicationController
       end
     end
   end
-
+  def edit
+    
+  end
   def show
-    @building = Building.find(params[:id])
     @apartments = Apartment.where(building_id: @building.id)
   end
 
-  def solo_conce1
-    @buildings = Building.where(city: "Concepcion")
+  def update
+    if @building.update(building_params)
+      redirect_to buildings_path
+    else
+      render :edit
+    end  
   end
 
-  def solo_santiago1
-    @buildings = Building.where(city: "Santiago")
+  def destroy
+    if @building.destroy
+      flash[:destroy] = "Edificio #{@building.name} eliminado"
+    else
+      flash[:destroy] = "No pudo eliminarse"
+    end
+    redirect_to buildings_path
   end
 
   private
 
   def building_params
     params.require(:building).permit(:name, :address, :city)
+  end
+
+  def set_building
+    @building = Building.find(params[:id])
   end
 end
